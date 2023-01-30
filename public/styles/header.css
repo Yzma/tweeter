@@ -1,5 +1,6 @@
 .header {
-  height: 400px;
+  padding: 2em;
+  padding-top: 5.5em;
   width: 100%;
 
   display: flex;
