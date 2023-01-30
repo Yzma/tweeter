@@ -1,0 +1,42 @@
+.tweet {
+  margin-top: 1em;
+  padding: 1em;
+  border: 4px;
+  border-style: solid;
+}
+
+.tweet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tweet-header div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tweet-header a {
+  padding-left: 15px;
+}
+
+.tweet-text {
+  border: solid;
+  border-width: 0 0 3px;
+  border-color: rgb(78, 76, 76);
+  padding-bottom: 5px;
+}
+
+.tweet-icons i:hover {
+  color: darkgoldenrod;
+  cursor: pointer;
+}
+
+.tweet-footer {
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
