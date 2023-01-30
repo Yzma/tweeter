@@ -6,6 +6,9 @@
   background-color: #4056A1;
   color: #FFFFFF;
 
+  top: 0;
+  right: 0;
+
   display: flex;
   justify-content: space-between;
   position: fixed;
