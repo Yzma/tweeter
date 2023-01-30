@@ -1,30 +1,30 @@
-"use strict";
+"use strict"
 
 const Chance      = require("chance"),
-      chance      = new Chance();
+  chance      = new Chance()
 
-const md5 = require('md5');
+const md5 = require('md5')
 
 
 module.exports = {
   generateRandomUser: () => {
-    const gender    = chance.gender();
-    const firstName = chance.first({gender: gender});
-    const lastName  = chance.last();
-    const userName  = firstName + " " + lastName;
+    const gender    = chance.gender()
+    const firstName = chance.first({gender: gender})
+    const lastName  = chance.last()
+    const userName  = firstName + " " + lastName
     
-    let userHandle = "@";
+    let userHandle = "@"
     if (Math.random() > 0.5) {
-      let prefix    = chance.prefix({gender: gender});
-      prefix = prefix.replace(".", "");
+      let prefix    = chance.prefix({gender: gender})
+      prefix = prefix.replace(".", "")
       userHandle += prefix
     }
 
-    userHandle += lastName;
+    userHandle += lastName
 
     if (Math.random() > 0.5) {
-      const suffix = Math.round(Math.random() * 100);
-      userHandle += suffix;
+      const suffix = Math.round(Math.random() * 100)
+      userHandle += suffix
     }
    
     const avatars = {
@@ -35,13 +35,13 @@ module.exports = {
     }
     
     const avatarArray = avatars[gender]
-    const userAvatar = avatarArray[Math.floor(Math.random()*avatarArray.length)]
+    const userAvatar = avatarArray[Math.floor(Math.random() * avatarArray.length)]
   
 
     return {
       name: userName,
       handle: userHandle,
       avatars: userAvatar
-    };
+    }
   }
-};
+}
