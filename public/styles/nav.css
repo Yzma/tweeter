@@ -1,5 +1,4 @@
 nav {
-  font-family: 'Bungee', sans-serif;
   background-color: #4056A1;
   color: #FFFFFF;
   height: 120px;
@@ -8,9 +7,11 @@ nav {
   display: flex;
   justify-content: space-between;
   position: fixed;
+  font-family: 'Bungee', sans-serif;
 }
 
 nav div {
+  font-family: 'Source Sans Pro', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
