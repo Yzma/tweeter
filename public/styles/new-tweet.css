@@ -1,4 +1,8 @@
 
+.new-tweet {
+  width: 100%;
+}
+
 .new-tweet h2 {
   padding: 0 0 3px 0;
 }
