@@ -1,9 +1,11 @@
 .navbar-top {
-  background-color: #4056A1;
-  color: #FFFFFF;
+  padding: 1.5em;
   height: 120px;
   width: 100%;
-  padding: 1.5em;
+ 
+  background-color: #4056A1;
+  color: #FFFFFF;
+
   display: flex;
   justify-content: space-between;
   position: fixed;
