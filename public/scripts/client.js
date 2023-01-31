@@ -4,31 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const tweetData = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
-
 const createTweetElement = function(tweet) {
   return `
     <article class="tweet">
@@ -63,10 +38,29 @@ const renderTweets = function(tweets) {
   }
 }
 
+const loadTweets = function(callback) {
+  $.get('/tweets')
+    .then((result) => {
+      console.log('Success: ', result)
+      return callback(null, result)
+    }).catch((e) => {
+      console.log('error happened - probably empty tweet text')
+      return error(e, null)
+    })
+}
+
 $(document).ready(function() {
 
-  renderTweets(tweetData)
+  loadTweets((error, data) => {
+    if (error) {
+      console.log('Error found: ', error)
+      return
+    }
 
+    console.log('loadTweets data:', data)
+    renderTweets(data)
+  })
+  
   $('#publish-tweet-form').submit((event) => {
 
     event.preventDefault()
