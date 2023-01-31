@@ -6,8 +6,6 @@
 
 // TODO: Delete console.log when submitting project
 
-let toggleActive = false
-
 /**
  * Generates and returns an HTML Object that represents what a Tweet should look like in the DOM
  *
@@ -39,6 +37,10 @@ const createTweetElement = function(tweet) {
   `
 }
 
+/**
+ * TODO: Comment
+ * @param {Array} tweets
+ */
 const renderTweets = function(tweets) {
   for (let i of tweets) {
     const tweet = createTweetElement(i)
@@ -48,6 +50,10 @@ const renderTweets = function(tweets) {
   }
 }
 
+/**
+ * TODO: Comment
+ * @param {Object} callback
+ */
 const loadTweets = function(callback) {
   $.get('/tweets')
     .then((result) => {
@@ -102,30 +108,23 @@ $(document).ready(function() {
 
     event.preventDefault()
 
-    const tweetText = $("#tweet-text").val()
-    if (!tweetText || tweetText.length === 0 || tweetText.length > 140) {
-      
-      const tweetErrorElement = $(".tweet-error")
-      console.log('toggleActive:', toggleActive)
-      if (!toggleActive) {
-        console.log('hello2')
-        tweetErrorElement.slideToggle({
-          duration: 500,
-          start: () => {
-            toggleActive = true
-            $('.tweet-error').css('display', 'flex')
-          },
-          complete: () => {
-            setTimeout(() => {
-              toggleActive = false
-              tweetErrorElement.slideToggle({
-                duration: 500
-              })
-            }, 5000)
-          }
-        })
-      }
+    const tweetErrorElement = $(".tweet-error")
+    const tweetTextElement = $("#tweet-text")
 
+    tweetErrorElement.slideUp({
+      duration: 0
+    })
+    
+    const error = validateTweet(tweetTextElement.val())
+    if (error) {
+      tweetErrorElement.find('p').html(error)
+      console.log(tweetErrorElement.find('p'))
+      tweetErrorElement.slideDown({
+        duration: 500,
+        start: () => {
+          tweetErrorElement.css('display', 'flex')
+        }
+      })
       return
     }
 
@@ -135,11 +134,11 @@ $(document).ready(function() {
       .then((result) => {
         console.log('Success: ', result)
         
-        $("#tweet-text").val('')
-        $("#tweet-text-counter").val('140')
+        tweetTextElement.val('')
+        tweetTextElement.parent().find("#tweet-text-counter").val('140')
         renderTweets([result.tweet])
       }).catch((e) => {
-        console.log('error happened - probably empty tweet text')
+        console.error('Error posting tweet:', e)
       })
   })
 })
@@ -167,45 +166,12 @@ const escapeText = function(str) {
   return result
 }
 
-/**
- * TODO: Write description
- * @param {Integer} slideDuration The time (in milliseconds) the slide animation will take to play
- * @param {Integer} timeoutToClose The time (in milliseconds) it will take to toggle the slide animation
- */
-const playTweetErrorAnimation = function(slideDuration, timeoutToClose) {
-  const tweetErrorElement = $(".tweet-error")
-  if (!toggleActive) {
-    tweetErrorElement.slideToggle({
-      duration: slideDuration,
-      start: () => {
-        toggleActive = true
-        $('.tweet-error').css('display', 'flex')
-      },
-      complete: () => {
-        setTimeout(() => {
-          toggleActive = false
-          tweetErrorElement.slideToggle({
-            duration: slideDuration
-          })
-        }, timeoutToClose)
-      }
-    })
+// TODO: Comment
+const validateTweet = function(text) {
+  if (!text) {
+    return "Tweet text is empty"
+  } else if (text.length === 0 || text.length > 140) {
+    return "Tweet text is too long"
   }
+  return null
 }
-
-// TODO: Delete comment
-// $(".tweet-error").slideDown({
-//   duration: 500,
-//   start: () => {
-//     $('.tweet-error').css('display', 'flex')
-//   },
-// })
-
-// setTimeout(() => {
-//   $(".tweet-error").slideUp({
-//     duration: 500,
-//     start: function() {
-//       $('.tweet-error').css('display', 'flex')
-//     }
-//   })
-// }, 4000)
