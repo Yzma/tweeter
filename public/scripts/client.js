@@ -65,6 +65,7 @@ $(document).ready(function() {
     renderTweets(data)
   })
 
+  // TODO: Move this into a separate function, cleanup
   $('.navbar-tweet').click((event) => {
     const tweetErrorElement = $('.new-tweet')
     
@@ -75,7 +76,21 @@ $(document).ready(function() {
         // $('.new-tweet').css('display', 'flex')
       },
     })
-    
+  })
+
+  $('.back-to-top').click((event) => {
+    $("html, body").scrollTop(0)
+  })
+
+
+  $(document).scroll(function() {
+    let y = $(this).scrollTop()
+    console.log('y=', y)
+    if (y > 400) {
+      $('.back-to-top').css('display', 'unset')
+    } else {
+      $('.back-to-top').css('display', 'none')
+    }
   })
 
   $('#publish-tweet-form').submit((event) => {
