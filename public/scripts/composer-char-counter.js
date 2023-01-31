@@ -1,12 +1,12 @@
 $(document).ready(function() {
   $("#tweet-text").on('input', function() {
-    //$(this).val().length
     const remainingCharacters = (140 - $(this).val().length)
+    const tweetTextCounter = $(this).parent().find("#tweet-text-counter")
     if (remainingCharacters < 0) {
-      $("#tweet-text-counter").addClass("red")
+      tweetTextCounter.addClass("red")
     } else {
-      $("#tweet-text-counter").removeClass("red")
+      tweetTextCounter.removeClass("red")
     }
-    $("#tweet-text-counter").text(remainingCharacters)
+    tweetTextCounter.text(remainingCharacters)
   })
 })
