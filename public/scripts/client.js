@@ -69,7 +69,7 @@ $(document).ready(function() {
 
   loadTweets((error, data) => {
     if (error) {
-      console.log('Error found: ', error)
+      console.log('Error loading tweets: ', error)
       return
     }
 
