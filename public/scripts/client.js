@@ -45,7 +45,6 @@ const renderTweets = function(tweets) {
   for (let i of tweets) {
     const tweet = createTweetElement(i)
 
-    console.log(tweet)
     $('#tweets-container').prepend(tweet)
   }
 }
@@ -57,10 +56,8 @@ const renderTweets = function(tweets) {
 const loadTweets = function(callback) {
   $.get('/tweets')
     .then((result) => {
-      console.log('Success: ', result)
       return callback(null, result)
     }).catch((e) => {
-      console.log('error happened - probably empty tweet text')
       return callback(e, null)
     })
 }
@@ -69,11 +66,10 @@ $(document).ready(function() {
 
   loadTweets((error, data) => {
     if (error) {
-      console.log('Error loading tweets: ', error)
+      console.error('Error loading tweets: ', error)
       return
     }
 
-    console.log('loadTweets data:', data)
     renderTweets(data)
   })
 
@@ -103,7 +99,6 @@ $(document).ready(function() {
     const error = validateTweet(tweetTextElement.val())
     if (error) {
       tweetErrorElement.find('p').html(error)
-      console.log(tweetErrorElement.find('p'))
       tweetErrorElement.slideDown({
         duration: 500,
         start: () => {
@@ -117,8 +112,6 @@ $(document).ready(function() {
 
     $.post('/tweets', tweetData)
       .then((result) => {
-        console.log('Success: ', result)
-        
         tweetTextElement.val('')
         tweetTextElement.parent().find("#tweet-text-counter").val('140')
         renderTweets([result.tweet])

@@ -5,8 +5,7 @@ $(document).ready(function() {
 
   // TODO: Move this into composer?
   $(document).scroll(function() {
-    let y = $(this).scrollTop()
-    console.log('y=', y)
+    const y = $(this).scrollTop()
     if (y > 400) {
       $('.back-to-top').css('display', 'unset')
     } else {
