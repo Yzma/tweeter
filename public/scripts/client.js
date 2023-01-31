@@ -65,6 +65,19 @@ $(document).ready(function() {
     renderTweets(data)
   })
 
+  $('.navbar-tweet').click((event) => {
+    const tweetErrorElement = $('.new-tweet')
+    
+    tweetErrorElement.slideToggle({
+      duration: 500,
+      start: () => {
+        toggleActive = true
+        // $('.new-tweet').css('display', 'flex')
+      },
+    })
+    
+  })
+
   $('#publish-tweet-form').submit((event) => {
 
     event.preventDefault()

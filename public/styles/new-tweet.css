@@ -1,6 +1,7 @@
 
 .new-tweet {
   width: 100%;
+  display: none;
 }
 
 .new-tweet h2 {
