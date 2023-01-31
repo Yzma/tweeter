@@ -82,7 +82,7 @@ $(document).ready(function() {
     $("html, body").scrollTop(0)
   })
 
-
+  // TODO: Move this into composer?
   $(document).scroll(function() {
     let y = $(this).scrollTop()
     console.log('y=', y)
@@ -108,7 +108,7 @@ $(document).ready(function() {
     $.post('/tweets', tweetData)
       .then((result) => {
         console.log('Success: ', result)
-        
+        $("#tweet-text").val('')
         renderTweets([result.tweet])
       }).catch((e) => {
         console.log('error happened - probably empty tweet text')
@@ -129,6 +129,8 @@ $(document).ready(function() {
  * @param {String} str The string to escape
  * @returns An 'escaped' string
  */
+
+// TODO: Move this to server-side validation. Stop the server from receiving bad input in the first place as well.
 const escapeText = function(str) {
   let div = document.createElement("div")
   div.appendChild(document.createTextNode(str))
