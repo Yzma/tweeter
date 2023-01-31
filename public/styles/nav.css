@@ -18,9 +18,17 @@
   font-family: 'Bungee', sans-serif;
 }
 
+.navbar-side {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  width: 20vw;
+}
+
 .navbar-tweet {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
