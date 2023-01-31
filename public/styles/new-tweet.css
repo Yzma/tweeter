@@ -8,6 +8,10 @@
   padding: 0 0 3px 0;
 }
 
+.new-tweet label {
+  font-weight: bold;
+}
+
 .new-tweet button {
   font-family: 'Bungee', sans-serif;
   background-color: #4056A1;
@@ -30,11 +34,15 @@
   width: 100%;
 
   margin-bottom: 5px;
+  padding-top: 15px;
 
   outline: 0;
   border-width: 0 0 4px;
   border-color: rgb(78, 76, 76);
   resize: none;
+
+  font-weight: bold;
+  font-size: 18px;
 
   background-color: inherit;
 }
