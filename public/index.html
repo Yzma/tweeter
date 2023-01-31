@@ -1,87 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Information -->
-    <title>Tweeter - Home Page</title>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
+<head>
+  <!-- Meta Information -->
+  <title>Tweeter - Home Page</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    type="text/css" />
 
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/tweet-error.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/back-to-top.css" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:wght@300;600&display=swap"
+    rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/tweet-error.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/back-to-top.css" type="text/css" />
 
-    <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
-    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-  </head>
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
+    integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <body>
-    <!-- Top nav bar (fixed) -->
-    <nav class="navbar-top">
-      <span class="navbar-logo">tweeter</span>
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/client.js"></script>
+  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+</head>
 
-      <div class="navbar-side">
-        <div class="navbar-tweet">
-          <a>Write a new tweet</a>
-          <i class="fa-solid fa-angles-down"></i> 
+<!-- TODO: Header is pushing the nav top the left
+  The tweeter logo somehow moves to the left if the Header is rendering -->
+
+<body>
+  <!-- Top nav bar (fixed) -->
+  <nav class="navbar-top">
+    <span class="navbar-logo">tweeter</span>
+
+    <div class="navbar-side">
+      <div class="navbar-tweet">
+        <a>Write a new tweet</a>
+        <i class="fa-solid fa-angles-down"></i>
+      </div>
+    </div>
+
+  </nav>
+
+  <header class="header">
+    <div>
+      <img src="/images/profile-hex.png">
+    </div>
+    <br>
+    <div>
+      <h2>Your Name</h2>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="tweet-error">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <p>Too long. Please respect the arbitrary character count limit :)</p>
+      <i class="fa-solid fa-triangle-exclamation"></i>
+    </div>
+
+    <section class="new-tweet">
+      <h2>Compose Tweet</h2>
+      <form id="publish-tweet-form" action="/tweets" method="POST">
+        <label for="tweet-text">What are you humming about?</label>
+        <textarea name="text" id="tweet-text"></textarea>
+        <div>
+          <button type="submit">Tweet</button>
+          <output id="tweet-text-counter" name="counter" class="counter" for="tweet-text">140</output>
         </div>
-      </div>
+      </form>
+    </section>
 
-    </nav>
+    <div id="tweets-container">
 
-    <header class="header">
-      <div>
-        <img src="/images/profile-hex.png">
-      </div>
-      <br>
-      <div>
-        <h2>Your Name</h2>
-      </div>
-    </header>
+    </div>
 
-    <main class="container">
+    <div class="back-to-top">
+      <i class="fa-solid fa-angles-up"></i>
+    </div>
 
-      <div class="tweet-error">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        <p>Too long. Please respect the arbitrary character count limit :)</p>
-        <i class="fa-solid fa-triangle-exclamation"></i>
-      </div>
+  </main>
+</body>
 
-      <section class="new-tweet">
-        <h2>Compose Tweet</h2>
-        <form id="publish-tweet-form" action="/tweets" method="POST">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text"></textarea>
-          <div>
-            <button type="submit">Tweet</button>
-            <output id="tweet-text-counter" name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
-
-      <div id="tweets-container">
-
-      </div>
-
-      <div class="back-to-top">
-        <i class="fa-solid fa-angles-up"></i> 
-      </div>
-    </main>
-  </body>
 </html>
