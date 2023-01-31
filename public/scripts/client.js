@@ -64,6 +64,14 @@ $(document).ready(function() {
   $('#publish-tweet-form').submit((event) => {
 
     event.preventDefault()
+
+    const tweetText = $("#tweet-text").val()
+    if (!tweetText || tweetText.length === 0 || tweetText.length > 140) {
+      alert('invalid tweet text')
+      return
+    }
+    console.log('tweet text: ', tweetText)
+
     const tweetData = $("#publish-tweet-form").serialize()
 
     $.post('/tweets', tweetData)
