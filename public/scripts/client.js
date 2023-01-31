@@ -16,7 +16,7 @@ const createTweetElement = function(tweet) {
           ${tweet.user.handle}
         </div>
       </div>
-      <p class="tweet-text">${tweet.content.text}</p>
+      <p class="tweet-text">${escapeText(tweet.content.text)}</p>
       <div class="tweet-footer">
         <a>${timeago.format(tweet.created_at, 'en_US')}</a>
         <div class="tweet-icons">
@@ -84,3 +84,11 @@ $(document).ready(function() {
       })
   })
 })
+
+const escapeText = function(str) {
+  let div = document.createElement("div")
+  div.appendChild(document.createTextNode(str))
+  const result = div.innerHTML
+  $(div).remove()
+  return result
+}
