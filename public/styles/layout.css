@@ -32,26 +32,3 @@ body {
 
   background-color: #f4f1ec;
 }
-
-.tweet-error {
-  border: solid;
-  border-width: 3px;
-  border-color: rgb(209, 18, 18);
-  color: rgb(209, 18, 18);
-  padding-bottom: 5px;
-
-  margin-top: 1em;
-  padding: 0.2em;
-  display: flex;
-  flex-direction: row; 
-  align-items: center;
-  justify-content: space-around;
-  display: none;
-
-  max-height: 85px;
-  
-}
-
-.tweet-error i {
-  padding: 0 2em 0;
-}
