@@ -45,7 +45,7 @@ const loadTweets = function(callback) {
       return callback(null, result)
     }).catch((e) => {
       console.log('error happened - probably empty tweet text')
-      return error(e, null)
+      return callback(e, null)
     })
 }
 
@@ -60,7 +60,7 @@ $(document).ready(function() {
     console.log('loadTweets data:', data)
     renderTweets(data)
   })
-  
+
   $('#publish-tweet-form').submit((event) => {
 
     event.preventDefault()
