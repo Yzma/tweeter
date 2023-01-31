@@ -34,7 +34,7 @@ const renderTweets = function(tweets) {
     const tweet = createTweetElement(i)
 
     console.log(tweet)
-    $('.container').append(tweet)
+    $('#tweets-container').prepend(tweet)
   }
 }
 
@@ -77,7 +77,8 @@ $(document).ready(function() {
     $.post('/tweets', tweetData)
       .then((result) => {
         console.log('Success: ', result)
-        // TODO: Render tweet
+        
+        renderTweets([result.tweet])
       }).catch((e) => {
         console.log('error happened - probably empty tweet text')
       })
