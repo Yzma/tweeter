@@ -46,6 +46,10 @@ body {
   flex-direction: row; 
   align-items: center;
   justify-content: space-around;
+  display: none;
+
+  max-height: 85px;
+  
 }
 
 .tweet-error i {

@@ -4,6 +4,10 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// TODO: Delete console.log when submitting project
+
+let toggleActive = false
+
 const createTweetElement = function(tweet) {
   return `
     <article class="tweet">
@@ -67,10 +71,9 @@ $(document).ready(function() {
 
     const tweetText = $("#tweet-text").val()
     if (!tweetText || tweetText.length === 0 || tweetText.length > 140) {
-      alert('invalid tweet text')
+      playTweetErrorAnimation(500, 4000)
       return
     }
-    console.log('tweet text: ', tweetText)
 
     const tweetData = $("#publish-tweet-form").serialize()
 
@@ -85,6 +88,19 @@ $(document).ready(function() {
   })
 })
 
+/**
+ * Returns an 'escaped' string that prevents the provided string to execute when rendering to the DOM.
+ * This is used to parse user input and display it in HTML without executing it. For example, if the user passed in the following:
+ *
+ * <script>
+ *  console.log('test')
+ * </script>
+ *
+ * If we tried to display that in HTML it would execute. This function ensures the input passed in turns into a String.
+ *
+ * @param {String} str The string to escape
+ * @returns An 'escaped' string
+ */
 const escapeText = function(str) {
   let div = document.createElement("div")
   div.appendChild(document.createTextNode(str))
@@ -92,3 +108,46 @@ const escapeText = function(str) {
   $(div).remove()
   return result
 }
+
+/**
+ * TODO: Write description
+ * @param {Integer} slideDuration The time (in milliseconds) the slide animation will take to play
+ * @param {Integer} timeoutToClose The time (in milliseconds) it will take to toggle the slide animation
+ */
+const playTweetErrorAnimation = function(slideDuration, timeoutToClose) {
+  const tweetErrorElement = $(".tweet-error")
+  if (!toggleActive) {
+    tweetErrorElement.slideToggle({
+      duration: 500,
+      start: () => {
+        toggleActive = true
+        $('.tweet-error').css('display', 'flex')
+      },
+      complete: () => {
+        setTimeout(() => {
+          toggleActive = false
+          tweetErrorElement.slideToggle({
+            duration: 500
+          })
+        }, 4000)
+      }
+    })
+  }
+}
+
+// TODO: Delete comment
+// $(".tweet-error").slideDown({
+//   duration: 500,
+//   start: () => {
+//     $('.tweet-error').css('display', 'flex')
+//   },
+// })
+
+// setTimeout(() => {
+//   $(".tweet-error").slideUp({
+//     duration: 500,
+//     start: function() {
+//       $('.tweet-error').css('display', 'flex')
+//     }
+//   })
+// }, 4000)
