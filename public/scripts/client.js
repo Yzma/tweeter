@@ -8,6 +8,12 @@
 
 let toggleActive = false
 
+/**
+ * Generates and returns an HTML Object that represents what a Tweet should look like in the DOM
+ *
+ * @param {Object} tweet Tweet object
+ * @returns An HTML DOM Object that represents a tweet
+ */
 const createTweetElement = function(tweet) {
   return `
     <article class="tweet">
@@ -16,9 +22,9 @@ const createTweetElement = function(tweet) {
           <img src="${tweet.user.avatars}"/>
           <a>${tweet.user.name}</a>
         </div>
-        <div>
+        <a class="tweet-header-username">
           ${tweet.user.handle}
-        </div>
+        </a>
       </div>
       <p class="tweet-text">${escapeText(tweet.content.text)}</p>
       <div class="tweet-footer">
@@ -72,7 +78,6 @@ $(document).ready(function() {
     tweetErrorElement.slideToggle({
       duration: 500,
       start: () => {
-        toggleActive = true
         // $('.new-tweet').css('display', 'flex')
       },
     })
@@ -99,7 +104,28 @@ $(document).ready(function() {
 
     const tweetText = $("#tweet-text").val()
     if (!tweetText || tweetText.length === 0 || tweetText.length > 140) {
-      playTweetErrorAnimation(500, 4000)
+      
+      const tweetErrorElement = $(".tweet-error")
+      console.log('toggleActive:', toggleActive)
+      if (!toggleActive) {
+        console.log('hello2')
+        tweetErrorElement.slideToggle({
+          duration: 500,
+          start: () => {
+            toggleActive = true
+            $('.tweet-error').css('display', 'flex')
+          },
+          complete: () => {
+            setTimeout(() => {
+              toggleActive = false
+              tweetErrorElement.slideToggle({
+                duration: 500
+              })
+            }, 5000)
+          }
+        })
+      }
+
       return
     }
 
@@ -108,7 +134,9 @@ $(document).ready(function() {
     $.post('/tweets', tweetData)
       .then((result) => {
         console.log('Success: ', result)
+        
         $("#tweet-text").val('')
+        $("#tweet-text-counter").val('140')
         renderTweets([result.tweet])
       }).catch((e) => {
         console.log('error happened - probably empty tweet text')
@@ -148,7 +176,7 @@ const playTweetErrorAnimation = function(slideDuration, timeoutToClose) {
   const tweetErrorElement = $(".tweet-error")
   if (!toggleActive) {
     tweetErrorElement.slideToggle({
-      duration: 500,
+      duration: slideDuration,
       start: () => {
         toggleActive = true
         $('.tweet-error').css('display', 'flex')
@@ -157,9 +185,9 @@ const playTweetErrorAnimation = function(slideDuration, timeoutToClose) {
         setTimeout(() => {
           toggleActive = false
           tweetErrorElement.slideToggle({
-            duration: 500
+            duration: slideDuration
           })
-        }, 4000)
+        }, timeoutToClose)
       }
     })
   }
