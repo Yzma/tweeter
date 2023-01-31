@@ -5,6 +5,10 @@
   border-style: solid;
 }
 
+.tweet:hover {
+  box-shadow: 5px 5px rgb(206, 198, 198);
+}
+
 .tweet-header {
   display: flex;
   justify-content: space-between;
