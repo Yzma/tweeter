@@ -64,16 +64,17 @@ const renderTweets = function(tweets) {
 }
 
 $(document).ready(function() {
+
   renderTweets(tweetData)
 
-  $('#publish-tweet-form').submit(function(event) {
+  $('#publish-tweet-form').submit((event) => {
 
     event.preventDefault()
     const tweetData = $("#publish-tweet-form").serialize()
 
     $.post('/tweets', tweetData)
-      .then(function(morePostsHtml) {
-        console.log('Success: ', morePostsHtml)
+      .then((result) => {
+        console.log('Success: ', result)
         // TODO: Render tweet
       }).catch((e) => {
         console.log('error happened - probably empty tweet text')
