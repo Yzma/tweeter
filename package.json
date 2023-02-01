@@ -1,15 +1,15 @@
 {
   "name": "tweeter",
   "version": "1.0.0",
-  "description": "A twitter clone by Lighthouse Labs for web bootcamp students to learn front-end dev skillz",
+  "description": "Tweeter is a simple, single-page Twitter clone that allows the user to create tweets and view them in a compact but clean UI",
   "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
     "local": "nodemon --watch server -e js server/index.js",
+    "build-css": "sass sass:public/styles --no-source-map",
     "sass-watch": "sass sass:public/styles --watch --poll --no-source-map"
   },
-  "author": "Lighthouse Labs",
+  "author": "Andrew Caruso",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
