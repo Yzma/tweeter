@@ -1,15 +1,17 @@
 $(document).ready(function() {
-  $('.back-to-top').click((event) => {
-    $("html, body").scrollTop(0)
+  
+  const backToTopElement = $('.back-to-top')
+
+  backToTopElement.click(() => {
+    $(document).scrollTop(0)
   })
 
-  // TODO: Move this into composer?
   $(document).scroll(function() {
     const y = $(this).scrollTop()
     if (y > 400) {
-      $('.back-to-top').css('display', 'unset')
+      backToTopElement.css('display', 'unset')
     } else {
-      $('.back-to-top').css('display', 'none')
+      backToTopElement.css('display', 'none')
     }
   })
 })
