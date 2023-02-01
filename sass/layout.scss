@@ -28,10 +28,7 @@ body {
 
   padding: 0 5%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; 
-
+  @include base.vertical_align;
+  
   background-color: base.$primary-color;
 }
