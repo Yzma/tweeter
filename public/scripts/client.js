@@ -62,63 +62,6 @@ const loadTweets = function(callback) {
     })
 }
 
-$(document).ready(function() {
-
-  loadTweets((error, data) => {
-    if (error) {
-      console.error('Error loading tweets: ', error)
-      return
-    }
-
-    renderTweets(data)
-  })
-
-  // TODO: Move this into a separate function, cleanup
-  $('.navbar-tweet').click((event) => {
-    const tweetErrorElement = $('.new-tweet')
-    
-    tweetErrorElement.slideToggle({
-      duration: 500
-    })
-    tweetErrorElement.find('#tweet-text').focus()
-  })
-
-  $('#publish-tweet-form').submit((event) => {
-
-    event.preventDefault()
-
-    const tweetErrorElement = $(".tweet-error")
-    const tweetTextElement = $("#tweet-text")
-
-    tweetErrorElement.slideUp({
-      duration: 0
-    })
-    
-    const error = validateTweet(tweetTextElement.val())
-    if (error) {
-      tweetErrorElement.find('p').html(error)
-      tweetErrorElement.slideDown({
-        duration: 500,
-        start: () => {
-          tweetErrorElement.css('display', 'flex')
-        }
-      })
-      return
-    }
-
-    const tweetData = $("#publish-tweet-form").serialize()
-
-    $.post('/tweets', tweetData)
-      .then((result) => {
-        tweetTextElement.val('')
-        tweetTextElement.parent().find("#tweet-text-counter").val('140')
-        renderTweets([result.tweet])
-      }).catch((e) => {
-        console.error('Error posting tweet:', e)
-      })
-  })
-})
-
 /**
  * Returns an 'escaped' string that prevents the provided string to execute when rendering to the DOM.
  * This is used to parse user input and display it in HTML without executing it. For example, if the user passed in the following:
@@ -151,3 +94,61 @@ const validateTweet = function(text) {
   }
   return null
 }
+
+
+$(document).ready(function() {
+
+  loadTweets((error, data) => {
+    if (error) {
+      console.error('Error loading tweets: ', error)
+      return
+    }
+
+    renderTweets(data)
+  })
+
+  // TODO: Move this into a separate function, cleanup
+  $('.navbar-tweet').click((event) => {
+    const tweetErrorElement = $('.new-tweet')
+
+    tweetErrorElement.slideToggle({
+      duration: 500
+    })
+    tweetErrorElement.find('#tweet-text').focus()
+  })
+
+  $('#publish-tweet-form').submit((event) => {
+
+    event.preventDefault()
+
+    const tweetErrorElement = $(".tweet-error")
+    const tweetTextElement = $("#tweet-text")
+
+    tweetErrorElement.slideUp({
+      duration: 0
+    })
+
+    const error = validateTweet(tweetTextElement.val())
+    if (error) {
+      tweetErrorElement.find('p').html(error)
+      tweetErrorElement.slideDown({
+        duration: 500,
+        start: () => {
+          tweetErrorElement.css('display', 'flex')
+        }
+      })
+      return
+    }
+
+    const tweetData = $("#publish-tweet-form").serialize()
+
+    $.post('/tweets', tweetData)
+      .then((result) => {
+        tweetTextElement.val('')
+        tweetTextElement.parent().find("#tweet-text-counter").val('140')
+        renderTweets([result.tweet])
+      }).catch((e) => {
+        console.error('Error posting tweet:', e)
+      })
+  })
+})
