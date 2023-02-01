@@ -1,6 +1,8 @@
 $(document).ready(function() {
   
   const backToTopElement = $('.back-to-top')
+  const scrollThreshold = $('.header').height() + 100
+  console.log(scrollThreshold)
 
   backToTopElement.click(() => {
     $(document).scrollTop(0)
@@ -9,7 +11,7 @@ $(document).ready(function() {
 
   $(document).scroll(function() {
     const y = $(this).scrollTop()
-    if (y > 400) {
+    if (y > scrollThreshold) {
       backToTopElement.css('display', 'unset')
     } else {
       backToTopElement.css('display', 'none')
