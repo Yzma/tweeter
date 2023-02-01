@@ -14,26 +14,26 @@
   display: flex;
   justify-content: space-between;
   position: fixed;
-}
 
-.navbar-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: base.$bungee-font;
-}
-
-.navbar-side {
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
+  .navbar-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: base.$bungee-font;
+  }
   
-}
-
-.navbar-tweet {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  .navbar-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    
+  }
+  .navbar-tweet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
 }

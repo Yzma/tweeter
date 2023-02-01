@@ -3,49 +3,49 @@
 .new-tweet {
   width: 100%;
   display: none;
-}
 
-.new-tweet h2 {
-  padding: 0 0 3px 0;
-}
+  h2 {
+    padding: 0 0 3px 0;
+  }
 
-.new-tweet label {
-  font-weight: bold;
-}
+  label {
+    font-weight: bold;
+  }
 
-.new-tweet button {
-  font-family: base.$bungee-font;
-  background-color: #4056A1;
-  color: white;
-  font-size: 0.7em;
-  border: none;
-  padding: 0.5em;
-}
+  button {
+    font-family: base.$bungee-font;
+    background-color: #4056A1;
+    color: white;
+    font-size: 0.7em;
+    border: none;
+    padding: 0.5em;
+  }
 
-.new-tweet button:hover {
-  cursor: pointer;
-  background-color: #1839a3;
-}
+  button:hover {
+    cursor: pointer;
+    background-color: #1839a3;
+  }
 
-.new-tweet button:active {
-  background-color: #1839a3;
-}
+  button:active {
+    background-color: #1839a3;
+  }
 
-.new-tweet textarea {
-  width: 100%;
-
-  margin-bottom: 5px;
-  padding-top: 15px;
-
-  outline: 0;
-  border-width: 0 0 4px;
-  border-color: base.$border-color;
-  resize: none;
-
-  font-weight: bold;
-  font-size: 18px;
-
-  background-color: base.$primary-color;
+  textarea {
+    width: 100%;
+  
+    margin-bottom: 5px;
+    padding-top: 15px;
+  
+    outline: 0;
+    border-width: 0 0 4px;
+    border-color: base.$border-color;
+    resize: none;
+  
+    font-weight: bold;
+    font-size: 18px;
+  
+    background-color: base.$primary-color;
+  }
 }
 
 .counter {
