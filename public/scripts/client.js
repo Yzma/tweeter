@@ -105,9 +105,7 @@ const toggleTweetForm = function(forceSlideDown) {
   } else {
     newTweetElement.slideDown({ duration: 500 })
   }
-
   newTweetElement.find('#tweet-text').focus()
-
 }
 
 $(document).ready(function() {

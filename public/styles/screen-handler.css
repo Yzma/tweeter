@@ -1,0 +1,22 @@
+/* Another smartphone breakpoint is maximum width of around 420px */
+/* @media only screen and (min-width: 420px) {
+
+} */
+
+/* Another tablet breakpoint is maximum width of 1024px */
+@media only screen and (min-width: 1024px) {
+  .screen-handler {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 200px;
+    padding-left: 5%;
+  }
+
+  .header {
+    width: 530px;
+    height: 430px;
+    margin-top: 0;
+  }
+
+  .container {}
+}
