@@ -78,11 +78,9 @@ $(document).ready(function() {
     const tweetErrorElement = $('.new-tweet')
     
     tweetErrorElement.slideToggle({
-      duration: 500,
-      start: () => {
-        // $('.new-tweet').css('display', 'flex')
-      },
+      duration: 500
     })
+    tweetErrorElement.find('#tweet-text').focus()
   })
 
   $('#publish-tweet-form').submit((event) => {
