@@ -4,6 +4,7 @@ $(document).ready(function() {
 
   backToTopElement.click(() => {
     $(document).scrollTop(0)
+    toggleTweetForm(true)
   })
 
   $(document).scroll(function() {

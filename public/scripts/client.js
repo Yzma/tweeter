@@ -95,6 +95,20 @@ const validateTweet = function(text) {
   return null
 }
 
+const toggleTweetForm = function(forceSlideDown) {
+  const newTweetElement = $('.new-tweet')
+  const isSlideDown = newTweetElement.is(':visible')
+
+  if (isSlideDown) {
+    if (!forceSlideDown)
+      newTweetElement.slideUp({ duration: 500 })
+  } else {
+    newTweetElement.slideDown({ duration: 500 })
+  }
+
+  newTweetElement.find('#tweet-text').focus()
+
+}
 
 $(document).ready(function() {
 
@@ -103,18 +117,11 @@ $(document).ready(function() {
       console.error('Error loading tweets: ', error)
       return
     }
-
     renderTweets(data)
   })
 
-  // TODO: Move this into a separate function, cleanup
   $('.navbar-tweet').click((event) => {
-    const tweetErrorElement = $('.new-tweet')
-
-    tweetErrorElement.slideToggle({
-      duration: 500
-    })
-    tweetErrorElement.find('#tweet-text').focus()
+    toggleTweetForm(false)
   })
 
   $('#publish-tweet-form').submit((event) => {
