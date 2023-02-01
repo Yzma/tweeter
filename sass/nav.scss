@@ -1,3 +1,5 @@
+@use 'base';
+
 .navbar-top {
   padding: 1.5em;
  
@@ -18,7 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Bungee', sans-serif;
+  font-family: base.$bungee-font;
 }
 
 .navbar-side {
