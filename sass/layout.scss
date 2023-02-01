@@ -19,7 +19,7 @@ html {
 body {
   font-family: base.$source-font;
   color: #545149;
-  background-color: #f4f1ec;
+  background-color: base.$primary-color;
   font-size: 24px;
   padding-bottom: 30px;
 }
@@ -33,5 +33,5 @@ body {
   justify-content: center;
   flex-direction: column; 
 
-  background-color: #f4f1ec;
+  background-color: base.$primary-color;
 }
