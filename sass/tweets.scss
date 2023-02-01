@@ -1,3 +1,5 @@
+@use 'base';
+
 #tweets-container {
   width: 100%;
 }
@@ -7,6 +9,7 @@
   padding: 1em;
   border: 4px;
   border-style: solid;
+  border-color: base.$border-color;
   width: 100%;
 }
 
@@ -38,7 +41,7 @@
 .tweet-text {
   border: solid;
   border-width: 0 0 3px;
-  border-color: rgb(78, 76, 76);
+  border-color: base.$border-color;
   padding-bottom: 5px;
   word-wrap: break-word;
 }
