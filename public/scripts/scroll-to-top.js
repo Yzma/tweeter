@@ -2,7 +2,6 @@ $(document).ready(function() {
   
   const backToTopElement = $('.back-to-top')
   const scrollThreshold = $('.header').height() + 100
-  console.log(scrollThreshold)
 
   backToTopElement.click(() => {
     $(document).scrollTop(0)
