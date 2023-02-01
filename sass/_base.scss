@@ -4,3 +4,10 @@ $source-font: 'Source Sans Pro', sans-serif;
 
 $primary-color: #f4f1ec;
 $border-color: #545149;
+
+@mixin vertical_align() {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

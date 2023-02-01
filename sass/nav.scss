@@ -29,11 +29,8 @@
     
   }
   .navbar-tweet {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include base.vertical_align;
+
     cursor: pointer;
   }
-  
 }
